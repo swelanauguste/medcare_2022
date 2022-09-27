@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head_title %}
+Providers
+{% endblock head_title %}
+
+
+{% block content %}
+<div class="container py-5">
+    <h1>Providers</h1>
+    <hr>
+    <div class="container py-5">
+        <ol>
+            {% for provider in object_list %}
+            <li><a class="text-decoration-none text-white" href="{{provider.get_absolute_url}}">{{provider}}</a></li>
+            <hr>
+            {% endfor %}
+        </ol>
+    </div>
+</div>
+
+{% endblock content %}

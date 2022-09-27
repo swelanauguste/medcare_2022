@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block head_title %}
+{{object}}
+{% endblock head_title %}
+
+
+{% block content %}
+<div class="container py-5">
+    <h1>{{object}}</h1>
+    <hr>
+    <div class="container py-5">
+        <div class="card bg-info w-50">
+            <h3 class="card-header py-4">{{object.first_name}}
+                {{object.last_name}}</h3>
+            <div class="mx-auto card bg-dark w-100">
+                <div class="card-body text-white">
+                    <div class="card w-50 bg-dark shadow-lg">
+                        <div class="card-body">
+                            <p class="card-text">
+                                {{object.address_set.last.address1}},
+                            </p>
+                            <p> {{ object.address_set.last.address2 }},</p>
+                            <p>{{object.address_set.last.district.district_name}},
+                            </p>
+                            <p> {{ object.address_set.last.postal_code }}.</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="float-end mb-3">
+                        <a href="#"
+                            class="btn btn-warning">Edit</a>
+                        <a href="#"
+                            class="btn btn-danger">delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
