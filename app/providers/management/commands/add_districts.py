@@ -1,37 +1,19 @@
-import faker.providers
 from django.core.management.base import BaseCommand
-from faker import Faker
-
-from ...models import District
-
-DISTRICTS = [
-    "gros islet",
-    "castries",
-    "anse la raye",
-    "caneries",
-    "soufriere",
-    "choisuel",
-    "laborie",
-    "vieux fort",
-    "micoud",
-    "parlsin",
-    "dennery",
-    "dophin",
-]
 
 
-class Provider(faker.providers.BaseProvider):
-    def districts(self):
-        return self.random_element(DISTRICTS)
+from providers.models import District
+
 
 
 class Command(BaseCommand):
-    help = "Add faker data to the database"
+    # def add_arguments(self, parser):
+    #     parser.add_argument("file_name", type=str)
 
     def handle(self, *args, **kwargs):
-        fake = Faker()
-
-        fake.add_provider(Provider)
-
-        for _ in range(12):
-            District.objects.get_or_create(district_name=fake.districts())
+        # file_name = kwargs["file_name"]
+        with open(f"district_list.txt") as file:
+            for row in file:
+                district_name = row.lower().replace("\n", "")
+                self.stdout.write(self.style.SUCCESS(f"{district_name} added"))
+                District.objects.get_or_create(district_name=district_name,)
+        self.stdout.write(self.style.SUCCESS("list of districts added"))

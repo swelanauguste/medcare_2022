@@ -17,6 +17,6 @@ class Command(BaseCommand):
                 provider=Provider.objects.get(pk=random.randint(1, 100)),
                 address1=fake.street_address(),
                 address2=fake.street_name(),
-                district=District.objects.get(pk=random.randint(1, 12)),
+                district=District.objects.get(pk=random.randint(9, 20)),
                 postal_code=fake.postcode(),
             )
