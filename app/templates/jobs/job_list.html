@@ -12,37 +12,38 @@ Jobs
     <h1>Jobs</h1>
     <hr>
     <div class="container py-5">
-        <div class="card col-lg-6 col-sm-12">
+        <div class="card col-lg-6 col-sm-12 mx-auto">
             <ul class="list-group list-group-flush">
                 {% for job in object_list %}
-                <li class="list-group-item">
-                    <a class="text-decoration-none fs-2 text-priamry mb-3" href="">{{job.name}}</a>
+                <li class="list-group-item py-3">
+                    <a class="text-decoration-none fs-5 text-dark my-3"
+                        href="">{{job.name}}</a>
                     <br>
                     <br>
                     <p class="d-flex text-muted"
-                        style="font-size: 12px;">skill level:
-                        {{job.skill_level}} - hourly rate: {{job.hourly_rate}}
+                        style="font-size: 14px;">skill level:
+                        {{job.skill_level}} - hourly rate: ${{job.hourly_rate}}
+                        hr
                         - posted: {{job.posted|naturaltime}}</p>
-                    <p style="font-size: 14px;">Lorem ipsum dolor sit amet
-                        consectetur adipisicing elit. Cum ducimus explicabo
-                        provident? Lorem ipsum dolor sit amet consectetur,
-                        adipisicing elit. Et esse nemo nam quia? Suscipit
-                        exercitationem omnis distinctio molestiae repellat
-                        harum....</p>
-
+                    <p style="font-size: 14px;">{{job.description}}</p>
                     <p class="d-flex">
-
                         {% for tag in job.tags.all %}
                         <button
-                            class="btn btn-sm btn-secondary mx-1 rounded-pill">{{tag}}</button>
-
+                            class="btn btn-sm btn-secondary mx-1 rounded-pill">{{tag|title}}</button>
                         {% endfor %}
-
                     </p>
+                    <a href="jobs/{{job.location.district_name}}">
+                        <p class="d-flex text-muted float-end"><span
+                                class="material-symbols-outlined">
+                                location_on
+                            </span><span
+                                style="font-size: 14px;">{{job.location.district_name|title}}</span>
+                        </p>
+                    </a>
                 </li>
                 {% endfor %}
             </ul>
-         
+
         </div>
     </div>
 </div>

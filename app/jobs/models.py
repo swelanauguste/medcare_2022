@@ -16,11 +16,12 @@ class Tag(models.Model):
     tag = models.CharField(max_length=50, unique=True)
 
     def __str__(self):
-        return self.tag
+        return f"{self.tag} {self.pk}"
 
 
 class Job(models.Model):
     name = models.CharField(max_length=50)
+    description = models.TextField(blank=True)
     posted_by = models.ForeignKey(Provider, on_delete=models.CASCADE)
     skill_level = models.CharField(
         max_length=1, choices=SKILL_LEVEL_LIST, default=ENTRY_LEVEL
