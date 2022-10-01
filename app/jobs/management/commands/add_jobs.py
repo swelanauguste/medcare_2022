@@ -13,11 +13,11 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         fake = Faker()
 
-        for _ in range(100):
+        for _ in range(20):
             Job.objects.get_or_create(
                 name=fake.company(),
-                description=fake.paragraph(nb_sentences=3),
-                posted_by=Provider.objects.get(pk=random.randint(1, 100)),
-                hourly_rate=random.randint(7, 10),
-                location=District.objects.get(pk=random.randint(9, 20)),
+                description=fake.paragraph(nb_sentences=7),
+                posted_by=Provider.objects.get(pk=random.randint(1, 20)),
+                hourly_rate=random.randint(7, 15),
+                location=District.objects.get(pk=random.randint(1, 12)),
             )

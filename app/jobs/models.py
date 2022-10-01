@@ -1,9 +1,9 @@
 from django.db import models
 from providers.models import District, Provider
 
-ENTRY_LEVEL = "3"
-MID_LEVEL = "2"
-SENIOR_LEVEL = "1"
+ENTRY_LEVEL = "entry level"
+MID_LEVEL = "mid level"
+SENIOR_LEVEL = "senior level"
 
 SKILL_LEVEL_LIST = [
     (ENTRY_LEVEL, "E"),
@@ -24,7 +24,7 @@ class Job(models.Model):
     description = models.TextField(blank=True)
     posted_by = models.ForeignKey(Provider, on_delete=models.CASCADE)
     skill_level = models.CharField(
-        max_length=1, choices=SKILL_LEVEL_LIST, default=ENTRY_LEVEL
+        max_length=12, choices=SKILL_LEVEL_LIST, default=ENTRY_LEVEL
     )
     hourly_rate = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     posted = models.DateTimeField(auto_now_add=True)
