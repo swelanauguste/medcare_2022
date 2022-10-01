@@ -9,8 +9,12 @@ Jobs
 
 {% block content %}
 <div class="container py-5">
-    <h1>Jobs</h1>
+    <h1>Jobs ({{object_list.count}})</h1>
     <hr>
+    <div class="col-lg-4 col-md-8 col-sm-12 mx-auto">
+        <input class="form-control rounded-pill"
+            type="text" autofocus>
+    </div>
     <div class="container py-5">
         <div class="card col-lg-8 col-md-6 col-sm-12 mx-auto">
             <ul class="list-group list-group-flush">
@@ -33,7 +37,7 @@ Jobs
                         {% endfor %}
                     </p>
                     <a href="jobs/{{job.location.district_name}}">
-                        <p class="d-flex text-muted float-end"><span
+                        <p class="d-flex text-dark fw-bold float-end"><span
                                 class="material-symbols-outlined">
                                 location_on
                             </span><span
@@ -41,6 +45,8 @@ Jobs
                         </p>
                     </a>
                 </li>
+                {% empty %}
+                <p class="text-center pb-3 pt-4">No Jobs</p>
                 {% endfor %}
             </ul>
 

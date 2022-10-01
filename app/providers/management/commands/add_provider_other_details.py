@@ -14,6 +14,6 @@ class Command(BaseCommand):
 
         for _ in range(100):
             OtherDetails.objects.get_or_create(
-                provider=Provider.objects.get(pk=random.randint(1, 100)),
+                provider=Provider.objects.get(pk=random.randint(1, 20)),
                 driver_license=random.randint(0, 1),
             )

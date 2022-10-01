@@ -10,7 +10,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         fake = Faker()
 
-        for _ in range(100):
+        for _ in range(20):
             Provider.objects.get_or_create(
                 title=fake.prefix_nonbinary(),
                 first_name=fake.first_name(),

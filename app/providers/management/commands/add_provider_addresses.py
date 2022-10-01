@@ -12,11 +12,11 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         fake = Faker()
 
-        for _ in range(100):
+        for _ in range(20):
             Address.objects.get_or_create(
-                provider=Provider.objects.get(pk=random.randint(1, 100)),
+                provider=Provider.objects.get(pk=random.randint(1, 20)),
                 address1=fake.street_address(),
                 address2=fake.street_name(),
-                district=District.objects.get(pk=random.randint(9, 20)),
+                district=District.objects.get(pk=random.randint(1, 12)),
                 postal_code=fake.postcode(),
             )

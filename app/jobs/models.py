@@ -19,12 +19,19 @@ class Tag(models.Model):
         return f"{self.tag} {self.pk}"
 
 
+class SkillLevel(models.Model):
+    skill_level = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return f"{self.skill_level} {self.pk}"
+
+
 class Job(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField(blank=True)
     posted_by = models.ForeignKey(Provider, on_delete=models.CASCADE)
-    skill_level = models.CharField(
-        max_length=12, choices=SKILL_LEVEL_LIST, default=ENTRY_LEVEL
+    skill_level = models.ForeignKey(
+        SkillLevel, on_delete=models.SET_DEFAULT, default=2
     )
     hourly_rate = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     posted = models.DateTimeField(auto_now_add=True)

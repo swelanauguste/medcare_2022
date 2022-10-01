@@ -12,9 +12,9 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         fake = Faker()
         # print(fake.simple_profile()['mail'])
-        for _ in range(100):
+        for _ in range(20):
             Contact.objects.get_or_create(
-                provider=Provider.objects.get(pk=random.randint(1, 100)),
+                provider=Provider.objects.get(pk=random.randint(1, 20)),
                 tel1=fake.msisdn(),
                 tel2=fake.msisdn(),
                 email=fake.simple_profile()['mail']
