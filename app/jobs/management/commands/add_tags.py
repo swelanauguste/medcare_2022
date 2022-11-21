@@ -11,7 +11,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         # file_name = kwargs["file_name"]
-        with open(f"tag_list.txt") as file:
+        with open(f"lists/tag_list.txt") as file:
             for row in file:
                 tag = row.lower().replace("\n", "")
                 self.stdout.write(self.style.SUCCESS(f"{tag} added"))

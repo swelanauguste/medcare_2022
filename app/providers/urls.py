@@ -7,4 +7,5 @@ app_name = "providers"
 urlpatterns = [
     path("", views.ProviderListView.as_view(), name="provider-list"),
     path("detail/<int:pk>/", views.ProvideDetailView.as_view(), name="provider-detail"),
+    path("update/<int:pk>/", views.ProviderUpdateView.as_view(), name="provider-update"),
 ]

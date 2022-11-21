@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block head_title %}
 {{object}}
 {% endblock head_title %}
@@ -17,21 +19,20 @@
                 <div class="card-body text-white">
                     <div class="card w-50 bg-dark shadow-lg">
                         <div class="card-body">
-                            <p class="card-text">
-                                {{object.address_set.last.address1}},
-                            </p>
-                            <p> {{ object.address_set.last.address2 }},</p>
-                            <p>{{object.address_set.last.district.district_name}},
-                            </p>
-                            <p> {{ object.address_set.last.postal_code }}.</p>
+                            <form action=""
+                                method="post">
+                                {% csrf_token %}
+                                {{form|crispy}}
                         </div>
                     </div>
                     <hr>
                     <div class="float-end mb-3">
-                        <a href="{% url 'providers:provider-update' object.pk %}"
-                            class="btn btn-warning">Edit</a>
-                        <a href="#"
-                            class="btn btn-danger">delete</a>
+                        <a href="{% url 'providers:provider-detail' object.pk %}"
+                            class="btn btn-lg btn-primary">Cancel</a>
+                        <button type="submit"
+                            class="btn btn-sm btn-outline-danger">Save</button>
+                        </form>
+
                     </div>
                 </div>
             </div>

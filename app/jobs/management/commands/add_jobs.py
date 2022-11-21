@@ -7,6 +7,8 @@ from providers.models import District, Provider
 from ...models import Job, SkillLevel
 
 
+
+
 class Command(BaseCommand):
     help = "Add faker data to the database"
 

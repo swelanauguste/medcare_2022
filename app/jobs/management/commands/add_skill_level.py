@@ -11,7 +11,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         # file_name = kwargs["file_name"]
-        with open(f"skill_level_list.txt") as file:
+        with open(f"lists/skill_level_list.txt") as file:
             for row in file:
                 skill_level = row.lower().replace("\n", "")
                 self.stdout.write(self.style.SUCCESS(f"{skill_level} added"))
